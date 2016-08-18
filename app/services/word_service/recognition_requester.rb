@@ -5,8 +5,7 @@ require 'time'
 
 module WordService
   class RecognitionRequester
-    API_KEY = Rails.application.secrets.docomo_api_key
-    API_BASE_URL = 'https://api.apigw.smt.docomo.ne.jp'.freeze
+    include WordService::Base
     API_URL_PATH = "/characterRecognition/v1/scene?APIKEY=#{API_KEY}".freeze
 
     def initialize(image_id)
