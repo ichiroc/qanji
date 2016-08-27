@@ -25,7 +25,7 @@ module WordService
         message: json['message'], raw_text: response.body,
         image: @image
       )
-      log.save ? log : false
+      log.save ? @image : false
     end
 
     private

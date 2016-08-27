@@ -5,10 +5,7 @@ class Image < ApplicationRecord
   has_many :words
   has_many :job_logs
 
-  private
-
   def latest_job_log
-    job_logs.order(updated_at: :desc).limit(1)
+    job_logs.last
   end
-
 end

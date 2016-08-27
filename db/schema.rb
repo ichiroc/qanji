@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(version: 20160812014022) do
   create_table "coordinates", force: :cascade do |t|
     t.float    "x",          null: false
     t.float    "y",          null: false
+    t.integer  "word_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["word_id"], name: "index_coordinates_on_word_id"
   end
 
   create_table "images", force: :cascade do |t|
