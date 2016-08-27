@@ -10,29 +10,49 @@ module WordService
     end
 
     def execute
+      if @image.latest_job_log.status == 'success'
+        return JSON.parse(@image.raw_text.force_encoding('utf-8'))
+      end
       response = Faraday.get "#{API_BASE_URL}/#{@api_url_path}"
-      result = JSON.parse(response.body)
-      message = result['message'] || ''
-      log = JobLog.new(
-        key: result.dig('job', '@id'), status: result.dig('job', '@status'),
-        queue_time: Time.parse(result.dig('job', '@queue-time')),
-        message: message, raw_text: response.body.force_encoding('UTF-8'),
+      parse_and_register response
+    end
+
+    private
+
+    def parse_and_register(response)
+      json = JSON.parse(response.body)
+      register_job_logs json
+      register_words json
+    end
+
+    def register_job_logs(json)
+      JobLog.create(
+        key: json.dig('job', '@id'),
+        status: json.dig('job', '@status'),
+        queue_time: Time.parse(json.dig('job', '@queue-time')),
+        message: json['message'],
+        raw_text: json.to_s,
         image: @image
       )
-      log.save
+    end
 
-      if result['job']['@status'] == 'success'
-        result['words']['word'].each do |json|
+    def register_words(json)
+      if json['job']['@status'] == 'success'
+        json['words']['word'].each do |json|
           word = Word.create(text: json['@text'],
                              score: json['@score'],
                              category: json['@category'],
                              image: @image)
-          json['shape']['point'].each do |point|
-            Coordinate.create(x: point['@x'], y: point['@y'], word: word)
-          end
+          register_coordinates(word, json)
         end
       end
-      result
+      @image.words
+    end
+
+    def register_coordinates(word, json)
+      json['shape']['point'].each do |point|
+        Coordinate.create(x: point['@x'], y: point['@y'], word: word)
+      end
     end
   end
 end

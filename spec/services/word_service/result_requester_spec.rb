@@ -11,14 +11,14 @@ RSpec.describe WordService::ResultRequester do
     let(:file_path) { "#{Rails.root}/db/seed_data/sample.jpg" }
 
     let(:recognition_service) { WordService::RecognitionRequester.new(@image.id) }
-    let(:status) { @result['job']['@status'] }
+    let(:status) { @image.latest_job_log.status }
     let(:words) { @image.words.reload }
     let(:coordinates) { words.first.coordinates }
 
     context 'すぐ結果を取得した場合' do
       before do
         recognition_service.execute
-        rsv= WordService::ResultRequester.new(@image.id)
+        rsv = WordService::ResultRequester.new(@image.id)
         @result = rsv.execute
       end
 
@@ -31,7 +31,7 @@ RSpec.describe WordService::ResultRequester do
       before do
         recognition_service.execute
         sleep 10
-        rsv= WordService::ResultRequester.new(@image.id)
+        rsv = WordService::ResultRequester.new(@image.id)
         @result = rsv.execute
       end
 

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160812014022) do
 
   create_table "job_logs", force: :cascade do |t|
     t.string   "key",        null: false
-    t.integer  "status",     null: false
+    t.string   "status",     null: false
     t.datetime "queue_time", null: false
     t.string   "message"
     t.text     "raw_text",   null: false
