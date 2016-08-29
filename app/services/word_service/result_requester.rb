@@ -38,7 +38,6 @@ module WordService
     end
 
     def register_words(json)
-      return @image.words if @image.latest_job_log.status == 'success'
       if json.dig('job', '@status') == 'success'
         json.dig('words', 'word').each do |wd|
           word = Word.create(text: wd['@text'],

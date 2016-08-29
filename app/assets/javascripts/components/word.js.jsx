@@ -1,9 +1,12 @@
 var Word = React.createClass({
-    render: function() {
+    render:function(){
         return(
-            <div id={this.props.key}>
-              {this.props.children.toString()}
-            </div>
+            <tr>
+              <td>{this.props.text}</td>
+              <td>{this.props.english}</td>
+              <td>{this.props.category}</td>
+              <td>{this.props.score}</td>
+            </tr>
         );
     }
 });
