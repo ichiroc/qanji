@@ -11,7 +11,7 @@ module WordService
 
     def execute
       if @image.latest_job_log.status == 'success'
-        return JSON.parse(@image.raw_text.force_encoding('utf-8'))
+        return true # JSON.parse(@image.latest_job_log.raw_text)
       end
       response = Faraday.get "#{API_BASE_URL}/#{@api_url_path}"
       parse_and_register response
@@ -38,6 +38,7 @@ module WordService
     end
 
     def register_words(json)
+      return @image.words if @image.latest_job_log.status == 'success'
       if json.dig('job', '@status') == 'success'
         json.dig('words', 'word').each do |wd|
           word = Word.create(text: wd['@text'],

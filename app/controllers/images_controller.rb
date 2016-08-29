@@ -15,6 +15,8 @@ class ImagesController < ApplicationController
   def create
     image_register = ImageService::Register.new(image_params[:data])
     image = image_register.execute
+    recognition_requester = WordService::RecognitionRequester.new(image.id)
+    recognition_requester.execute
     if image
       redirect_to action: 'show', id: image.id
     else
