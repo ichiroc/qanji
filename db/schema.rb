@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160812014022) do
 
   create_table "words", force: :cascade do |t|
     t.string   "text",       null: false
+    t.string   "english"
     t.float    "score"
     t.string   "category"
     t.integer  "image_id"

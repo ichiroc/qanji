@@ -57,3 +57,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bower-rails'
 gem 'react-rails'
 gem 'faraday'
+gem 'microsoft_translator'
