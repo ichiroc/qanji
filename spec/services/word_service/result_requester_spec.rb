@@ -4,13 +4,15 @@ require 'rails_helper'
 RSpec.describe WordService::ResultRequester do
   describe '#execute' do
     before do
+      # 対象とするオブジェクトは固定したいのでインスタンス変数にする
       @image = Image.create(file_name: File.basename(file_path),
                             data: File.new(file_path, 'rb').read,
                             content_type: 'image/jpeg')
     end
     let(:file_path) { "#{Rails.root}/db/seed_data/sample.jpg" }
-
-    let(:recognition_service) { WordService::RecognitionRequester.new(@image.id) }
+    let(:recognition_service) do
+      WordService::RecognitionRequester.new(@image.id)
+    end
     let(:status) { @image.latest_job_log.status }
     let(:words) { @image.words.reload }
     let(:coordinates) { words.first.coordinates }

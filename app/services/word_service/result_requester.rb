@@ -26,6 +26,7 @@ module WordService
     end
 
     def register_job_logs(json)
+      return @image.latest_job_log if @image.latest_job_log.status == 'success'
       JobLog.create(
         key: json.dig('job', '@id'),
         status: json.dig('job', '@status'),
@@ -37,13 +38,13 @@ module WordService
     end
 
     def register_words(json)
-      if json['job']['@status'] == 'success'
-        json['words']['word'].each do |json|
-          word = Word.create(text: json['@text'],
-                             score: json['@score'],
-                             category: json['@category'],
+      if json.dig('job', '@status') == 'success'
+        json.dig('words', 'word').each do |wd|
+          word = Word.create(text: wd['@text'],
+                             score: wd['@score'],
+                             category: wd['@category'],
                              image: @image)
-          register_coordinates(word, json)
+          register_coordinates(word, wd)
         end
       end
       @image.words
