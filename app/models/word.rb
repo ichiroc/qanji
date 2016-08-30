@@ -4,4 +4,12 @@ class Word < ApplicationRecord
   validates :score, presence: true, numericality: true
   belongs_to :image
   has_many :coordinates
+  after_save :fetch_english
+
+  private
+
+  def fetch_english
+    wt = WordService::Translator.new(id)
+    wt.execute
+  end
 end
