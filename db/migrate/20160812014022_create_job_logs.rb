@@ -6,7 +6,7 @@ class CreateJobLogs < ActiveRecord::Migration[5.0]
       t.datetime :queue_time, null: false
       t.string :message
       t.text :raw_text, null: false
-      t.references :image, foreign_key: true
+      t.references :image, foreign_key: true, null: false
 
       t.timestamps
     end

@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20160812014022) do
   create_table "coordinates", force: :cascade do |t|
     t.float    "x",          null: false
     t.float    "y",          null: false
-    t.integer  "word_id"
+    t.integer  "word_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["word_id"], name: "index_coordinates_on_word_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160812014022) do
     t.datetime "queue_time", null: false
     t.string   "message"
     t.text     "raw_text",   null: false
-    t.integer  "image_id"
+    t.integer  "image_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["image_id"], name: "index_job_logs_on_image_id"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20160812014022) do
     t.string   "english"
     t.float    "score"
     t.string   "category"
-    t.integer  "image_id"
+    t.integer  "image_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["image_id"], name: "index_words_on_image_id"

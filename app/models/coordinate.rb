@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  x          :float            not null
 #  y          :float            not null
-#  word_id    :integer
+#  word_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

@@ -5,7 +5,7 @@ class CreateWords < ActiveRecord::Migration[5.0]
       t.string :english
       t.float :score
       t.string :category
-      t.references :image, foreign_key: true
+      t.references :image, foreign_key: true, null: false
 
       t.timestamps
     end

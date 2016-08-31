@@ -7,7 +7,7 @@
 #  english    :string
 #  score      :float
 #  category   :string
-#  image_id   :integer
+#  image_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

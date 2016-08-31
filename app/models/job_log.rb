@@ -8,7 +8,7 @@
 #  queue_time :datetime         not null
 #  message    :string
 #  raw_text   :text             not null
-#  image_id   :integer
+#  image_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
