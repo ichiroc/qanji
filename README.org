@@ -3,7 +3,7 @@
 Railsの復習の為に開発中。
 日本に住む外国人が分かんない日本語の看板等を撮影してアップロードすると意味を教えてくれるWebアプリ。
 
-[元ネタ](http://ichiroc.hatenablog.com/entry/2012/11/07/061100)
+現在停止中の [[http://ichiroc.hatenablog.com/entry/2012/11/07/061100][元アプリ(Rails3)]] のリニューアル。
 
 
 ** 設計っぽいもの
