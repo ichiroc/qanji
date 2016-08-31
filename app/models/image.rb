@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: images
+#
+#  id           :integer          not null, primary key
+#  file_name    :string           not null
+#  content_type :string           not null
+#  data         :binary           not null
+#  job_key      :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Image < ApplicationRecord
   validates :content_type, presence: true
   validates :data, presence: true
