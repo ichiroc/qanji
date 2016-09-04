@@ -50,7 +50,7 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   gem 'rubocop'
-  gem 'rspec-rails'
+  gem 'rspec-rails', require: 'rspec/rails'
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
