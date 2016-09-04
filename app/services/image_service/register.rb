@@ -1,13 +1,16 @@
+# frozen_string_literal: true
 module ImageService
   class Register
-    def initialize(upload_file)
-      @upload_file = upload_file
+    def initialize(file_name:, content_type:, file:)
+      @file_name = file_name
+      @content_type = content_type
+      @file = file
     end
 
     def execute
-      Image.create(file_name: @upload_file.original_filename,
-                   content_type: @upload_file.content_type,
-                   data: @upload_file.read)
+      Image.create(file_name: @file_name,
+                   content_type: @content_type,
+                   data: @file)
     end
   end
 end

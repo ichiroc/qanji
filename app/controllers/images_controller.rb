@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :data]
 
@@ -13,10 +14,14 @@ class ImagesController < ApplicationController
   end
 
   def create
-    image_register = ImageService::Register.new(image_params[:data])
-    image = image_register.execute
-    recognition_requester = WordService::RecognitionRequester.new(image.id)
-    recognition_requester.execute
+    image = image_params[:data]
+    file_path = ImageService::Resizer.new(image.path).execute
+    register = ImageService::Register.new(file_name: image.original_filename,
+                                          content_type: image.content_type,
+                                          file: File.open(file_path, 'rb').read)
+    image = register.execute
+    requester = WordService::RecognitionRequester.new(image.id)
+    requester.execute
     if image
       redirect_to action: 'show', id: image.id
     else
@@ -35,7 +40,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet,
+  # Nev
   # only allow the white list through.
   def image_params
     params.require(:image).permit(:data)
