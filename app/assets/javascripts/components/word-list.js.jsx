@@ -33,7 +33,7 @@ var WordList = React.createClass({
                 this.setState({data: data});
             }.bind(this),
             error: function(){
-                alert("Oops! Somethings goes wrong!");
+                alert("Oops! Something goes wrong!");
             }.bind(this)
         });
     },
