@@ -45,6 +45,11 @@ var WordList = React.createClass({
         var wordNodes = this.state.data.words.map(function(w){
             return <Word key={w.id} text={w.text} english={w.english} category={w.category} score={w.score} />;
         });
+
+        if(wordNodes.length == 0 ){
+            return <Loading />;
+        }
+
         return(
             <table>
               <thead>
