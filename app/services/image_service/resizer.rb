@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ImageService
   class Resizer
     def initialize(file_path, max = 1024)
