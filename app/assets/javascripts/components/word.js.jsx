@@ -1,5 +1,5 @@
-var Word = React.createClass({
-    render:function(){
+class Word extends React.Component{
+    render(){
         return(
             <tr>
               <td>{this.props.text}</td>
@@ -9,4 +9,4 @@ var Word = React.createClass({
             </tr>
         );
     }
-});
+}

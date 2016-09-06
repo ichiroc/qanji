@@ -1,8 +1,11 @@
-var WordList = React.createClass({
-    getInitialState: function(){
-        return({data: { words: [] }});
-    },
-    fetchWords:function(){
+class WordList extends React.Component{
+    constructor(props){
+        super(props);
+        this.sending = false;
+        this.state = { data: { words: [] } };
+    }
+
+    fetchWords(){
         // 二重送信を防ぐ
         if(!this.sending){
             this.sending = true;
@@ -24,12 +27,14 @@ var WordList = React.createClass({
                 }.bind(this)
             });
         }
-    },
-    componentDidMount: function(){
+    }
+
+    componentDidMount(){
         this.fetchWords();
         this.intervalId = setInterval(this.fetchWords, 5000);
-    },
-    render: function(){
+    }
+
+    render (){
         var wordNodes = this.state.data.words.map(function(w){
             return <Word key={w.id} text={w.text} english={w.english} category={w.category} score={w.score} />;
         });
@@ -52,5 +57,6 @@ var WordList = React.createClass({
                 {wordNodes}
               </tbody>
             </table>
-        );}
-});
+        );
+    }
+}
