@@ -10,6 +10,7 @@ module ImageService
       mgimg = Magick::ImageList.new(@file_path)
       if mgimg.columns > @max
         mgimg.resize_to_fit!(@max)
+        tmppath = mk_tmppath
         mgimg.write(tmppath)
         @file_path = tmppath
       end
@@ -18,7 +19,7 @@ module ImageService
 
     private
 
-    def tmppath
+    def mk_tmppath
       Dir::Tmpname.make_tmpname("#{Rails.root}/tmp/resized_image_", extname)
     end
 
