@@ -78,7 +78,7 @@ Model にいろいろ詰めこまずに Services 層をはさんでみる。
 - [X] 画像の解析リクエストを出来るようにする
 - [X] 画像の解析結果を取得出来るようにする
 - [X] 解析した文字の訳を取得する
-- [ ] 画像を縮小する [[https://dev.smt.docomo.ne.jp/?p=docs.api.page&api_name=character_recognition&p_name=api_1#tag01][幅および高さ4096ピクセル以内]]
+- [X] 画像を縮小する(1024px以内) Docomoの制限は [[https://dev.smt.docomo.ne.jp/?p=docs.api.page&api_name=character_recognition&p_name=api_1#tag01][幅および高さ4096ピクセル以内]]
 - [ ] 画像を適切な方向へ回転する
 - [ ] 簡単なユーザー用画面を作成する
 - [ ] 解析結果を詳細画面に表示する
