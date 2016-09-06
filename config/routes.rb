@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
-
-  resources :images, only:[ :show, :new, :index, :create ] do
+  root 'images#new'
+  resources :images, only: [:show, :new, :index, :create] do
     member do
       get 'data'
     end
