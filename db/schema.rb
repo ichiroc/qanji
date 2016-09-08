@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812014022) do
+ActiveRecord::Schema.define(version: 20160908050210) do
 
   create_table "coordinates", force: :cascade do |t|
     t.float    "x",          null: false
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20160812014022) do
     t.string   "job_key"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "width"
+    t.integer  "height"
   end
 
   create_table "job_logs", force: :cascade do |t|

@@ -1,6 +1,5 @@
 <h1><%= @image.file_name %></h1>
-<div>
-    <%= image_tag data_image_url @image %>
-</div>
+<canvas id="canvas" width="<%= @image.width %>" height="<%= @image.height %>">
+</canvas>
 
 <div id="word-list"></div>

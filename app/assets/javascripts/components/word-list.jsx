@@ -36,12 +36,16 @@ class WordList extends React.Component{
 
     render (){
         var wordNodes = this.state.data.words.map(function(w){
+            // TODO: ちゃんとデータの持ち方を設計する
+            var wr = new WordRegion(document.getElementById('canvas'), w);
+            wr.draw();
             return <Word key={w.id} text={w.text} english={w.english} category={w.category} score={w.score} />;
         });
 
         if(wordNodes.length == 0 ){
             return <Loading />;
         }
+
 
         return(
             <table>
