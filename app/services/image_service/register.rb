@@ -8,8 +8,13 @@ module ImageService
     end
 
     def execute
+      file_name = "#{Rails.root}/tmp/image-wh-#{@file_name}"
+      File.open(file_name, 'wb').write(@file)
+      img = Magick::ImageList.new(file_name)
       Image.create(file_name: @file_name,
                    content_type: @content_type,
+                   width: img.columns,
+                   height: img.rows,
                    data: @file)
     end
   end
