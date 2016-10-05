@@ -1,4 +1,4 @@
-json.status @image.latest_job_log.status
+json.status @status
 json.words @words do |word|
   json.id word.id
   json.text word.text

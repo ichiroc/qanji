@@ -8,6 +8,6 @@ class WordsController < ApplicationController
       rreq = WordService::ResultRequester.new(@image.id)
       rreq.execute
     end
-    @words = @image.words
+    @status = @image.latest_job_log.status
   end
 end
