@@ -1,0 +1,7 @@
+%h1 Image#new
+%p#notice= notice
+= form_for(@image) do |f|
+  %p
+    Picture:  #{f.file_field :data}
+  %p
+    = f.submit 'Submit'
