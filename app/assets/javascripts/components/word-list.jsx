@@ -13,18 +13,18 @@ class WordList extends React.Component{
                 url: location.pathname + '/words.json',
                 dataType: 'json',
                 cache: false,
-                success: function(data){
+                success:(data) => {
                     if(data.status == "success"){
                         clearInterval(this.intervalId);
                     }
                     this.setState({data: data});
-                }.bind(this),
-                error: function(){
+                },
+                error: () => {
                     alert("Oops! Something goes wrong!");
-                }.bind(this),
-                complete: function(){
+                },
+                complete: () => {
                     this.sending = false;
-                }.bind(this)
+                }
             });
         }
     }
@@ -35,7 +35,7 @@ class WordList extends React.Component{
     }
 
     render (){
-        var wordNodes = this.state.data.words.map(function(w){
+        var wordNodes = this.state.data.words.map((w) => {
             // TODO: ちゃんとデータの持ち方を設計する
             var wr = new WordRegion(document.getElementById('canvas'), w);
             wr.draw();
