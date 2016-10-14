@@ -1,4 +1,4 @@
-class WordRegion {
+export default class WordRegion {
     constructor(canvas, word){
         this.ctx = canvas.getContext('2d');
         this.word = word;

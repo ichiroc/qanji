@@ -1,4 +1,10 @@
-class WordList extends React.Component{
+import React from 'react';
+import Loading from './loading.jsx';
+import Word from './word.jsx';
+import WordRegion from './word-region.jsx';
+import $ from 'jquery';
+
+export default class WordList extends React.Component{
     constructor(props){
         super(props);
         this.sending = false;

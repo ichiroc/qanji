@@ -1,3 +1,8 @@
+import $ from 'jquery';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import WordList from './components/word-list.jsx';
+
 $(window).on("load",
              () => {
                  var img = new Image();
