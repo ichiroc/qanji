@@ -23,3 +23,6 @@
 tags
 
 config/secrets.yml
+
+/client/node_modules
+/app/assets/javascripts/webpack
