@@ -18,20 +18,19 @@ export default class WordList extends React.Component{
             $.ajax({
                 url: location.pathname + '/words.json',
                 dataType: 'json',
-                cache: false,
-                success:(data) => {
+                cache: false })
+                .done((data) => {
                     if(data.status == "success"){
                         clearInterval(this.intervalId);
                     }
                     this.setState({data: data});
-                },
-                error: () => {
-                    alert("Oops! Something goes wrong!");
-                },
-                complete: () => {
                     this.sending = false;
-                }
-            });
+                })
+                .fail( (err) => {
+                    alert("Oops! Something goes wrong!");
+                    console.log(err);
+                    this.sending = false;
+                });
         }
     }
 
