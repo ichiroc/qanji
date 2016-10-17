@@ -53,7 +53,7 @@ export default class WordList extends React.Component{
 
 
         return(
-            <table>
+            <table className='table'>
               <thead>
                 <tr>
                   <th>Word</th>

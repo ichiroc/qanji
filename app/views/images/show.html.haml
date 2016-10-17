@@ -1,3 +1,7 @@
 %h1= @image.file_name
-%canvas#canvas{ width: @image.width, height: @image.height}
-#word-list
+.row
+  .col-xs-12
+    %canvas#canvas{ width: @image.width, height: @image.height}
+.row
+  .col-xs-12
+    #word-list
