@@ -12,8 +12,6 @@ export default class WordList extends React.Component{
     render (){
         if(this.props.words.length == 0 ) { return <div /> ;}
         var wordNodes = this.props.words.map((w) => {
-            /* var wr = new WordRegion(document.getElementById('canvas'), w);
-             * wr.draw();*/
             return <Word key={w.id} text={w.text} english={w.english} category={w.category} score={w.score} />;
         });
 

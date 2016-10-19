@@ -8,7 +8,7 @@ export default class App extends React.Component {
         return <div onLoad={ this.props.handleOnLoad() }>
             <StatusContainer />
             <ImageContainer />
-            <WordListContainer onLoad={this.props.handleOnLoad()} />
+            <WordListContainer />
             </div>;
     }
 }
