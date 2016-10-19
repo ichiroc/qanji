@@ -18,6 +18,6 @@ export const receiveWords = (words) =>{
 export const receiveErrors = (error) => {
     return{
         type: 'RECEIVE_ERRORS',
-        error: "Please reload after few minutes."
+        error: `Please reload after few minutes. (${error.status}: ${error.statusText}) `
     };
 };
