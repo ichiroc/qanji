@@ -17,7 +17,7 @@ export default class Image extends React.Component{
             var c = document.getElementById("canvas");
             c.width = img.width;
             c.height = img.height;
-            c.globalCompositeOperation='destination-over';
+            c.globalCompositeOperation='destination-over'; /* 既に描画している画像(WordRegion)の後ろに描画 */
             c.getContext("2d").drawImage(img,0,0);
         });
         img.src = location.pathname + "/data";
